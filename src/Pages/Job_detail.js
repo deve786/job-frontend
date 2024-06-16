@@ -65,7 +65,7 @@ function Job_detail() {
     return (
         <div className='p-3 px-6'>
             <div className='flex justify-between mb-3 px-8 py-4'>
-                <h2 className='text-4xl font-bold'>{job.jobTitle}</h2>
+                <h2 className='text-4xl font-bold'>{job.title}</h2>
                 <button onClick={handleApply} className='border font-semibold py-1 text-white px-8 rounded-2xl bg-blue-700 hover:bg-blue-500 hover:text-black'>Apply</button>
             </div>
             <hr />
@@ -82,7 +82,7 @@ function Job_detail() {
                         <div className='flex flex-col font-semibold gap-4'>
                             <p className='flex items-center gap-2'><i className="fa-solid fa-dollar-sign"></i> {job.salary}</p>
                             <p className='flex items-center gap-2'><i className="fa-solid fa-location-dot"></i> {job.location}</p>
-                            <p className='flex items-center gap-2'><i className="fa-solid fa-suitcase"></i> {job.experince}</p>
+                            <p className='flex items-center gap-2'><i className="fa-solid fa-suitcase"></i> {job.experience}</p>
                             <p className='flex items-center gap-2'><i className="fa-regular fa-clock"></i> {timeAgo}</p>
                         </div>
                     </div>

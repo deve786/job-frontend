@@ -5,9 +5,11 @@ function Modal({ data, toggleModal, jobData, onSave }) {
         title: '',
         company: '',
         experience: '',
+        salary:'',
         location: '',
         description: '',
-        technologies: ''
+        technologies: '',
+        postedAt:Date.now()
     });
 
     useEffect(() => {
@@ -16,18 +18,22 @@ function Modal({ data, toggleModal, jobData, onSave }) {
                 title: jobData.title,
                 company: jobData.company,
                 experience: jobData.experience,
+                salary:jobData.salary,
                 location: jobData.location,
                 description: jobData.description,
-                technologies: jobData.technologies
+                technologies: jobData.technologies,
+                postedAt:jobData.postedAt
             });
         } else {
             setForm({
                 title: '',
                 company: '',
                 experience: '',
+                salary:'',
                 location: '',
                 description: '',
-                technologies: ''
+                technologies: '',
+                postedAt:Date.now()
             });
         }
     }, [jobData]);
@@ -67,6 +73,10 @@ function Modal({ data, toggleModal, jobData, onSave }) {
                         <div className="mb-4">
                             <label className="block text-sm font-medium text-gray-700">Experience</label>
                             <input className="mt-1 px-3 py-1 outline-none border block w-full border-gray-300 rounded-md shadow-sm" type="text" name="experience" value={form.experience} onChange={handleChange} required />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium text-gray-700">Salary</label>
+                            <input className="mt-1 px-3 py-1 outline-none border block w-full border-gray-300 rounded-md shadow-sm" type="text" name="salary" value={form.salary} onChange={handleChange} required />
                         </div>
                         <div className="mb-4">
                             <label className="block text-sm font-medium text-gray-700">Location</label>

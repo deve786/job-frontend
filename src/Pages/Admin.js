@@ -9,16 +9,18 @@ function Admin() {
     const [selectedJob, setSelectedJob] = useState(null);
     const [jobs, setJobs] = useState([]);
 
+    const fetchJobs = async () => {
+        try {
+            const response = await fetchJob();
+            setJobs(response.data); // Assuming response.data is an array of jobs
+        } catch (error) {
+            console.error('Error fetching jobs:', error);
+        }
+    };
+
     useEffect(() => {
         // Fetch jobs when the component mounts
-        const fetchJobs = async () => {
-            try {
-                const response = await fetchJob();
-                setJobs(response.data); // Assuming response.data is an array of jobs
-            } catch (error) {
-                console.error('Error fetching jobs:', error);
-            }
-        };
+        
 
         fetchJobs();
     }, []);
@@ -30,16 +32,19 @@ function Admin() {
     const handleAdd = () => {
         setSelectedJob(null);
         toggleModal();
+        fetchJobs();
     };
 
     const handleEdit = (job) => {
         setSelectedJob(job);
         toggleModal();
+        console.log(job);
     };
 
     const handleDelete=async(id)=>{
         const data =await deleteJob(id)
         console.log(data);
+        fetchJobs()
     }
 
     const handleSave = async (jobData) => {
@@ -61,15 +66,17 @@ function Admin() {
 
     return (
         <div className='p-3'>
-            <div className='flex justify-between items-center px-5 py-3'>
-                <div className='font-semibold'>Welcome Admin</div>
+            <div className='flex justify-between items-center px-5 py-3 mb-5'>
+                <div className='font-semibold text-2xl'>Welcome Admin</div>
                 <div className='flex gap-3'>
-                    <button onClick={handleAdd} data-modal-target="crud-modal" data-modal-toggle="crud-modal" className='border py-1 px-8 rounded-2xl hover:bg-gray-200 font-semibold'>Add</button>
-                    <Link to={'/applied'} ><button  className='border py-1 px-8 rounded-2xl hover:bg-gray-200 font-semibold'>Applied</button></Link>
+                    <button onClick={handleAdd} data-modal-target="crud-modal" data-modal-toggle="crud-modal" className='border py-1 px-8 rounded-2xl hover:bg-gray-200 font-semibold bg-blue-500'>Add</button>
+                    <Link to={'/applied'} ><button  className='border bg-yellow-500 py-1 px-8 rounded-2xl hover:bg-gray-200 font-semibold'>Applied</button></Link>
 
                 </div>
             </div>
             {
+                jobs.length>0?
+
                 jobs.map(job => (
                     <div key={job.id} className='mt-10 border py-4 px-6 shadow-lg'>
                         <div className='flex justify-between'>
@@ -83,6 +90,8 @@ function Admin() {
                         </div>
                     </div>
                 ))
+                :
+                <h2 className='font-semibold text-xl'>No jobs found..</h2>
             }
             {modal && <Modal data={modal} toggleModal={toggleModal} jobData={selectedJob} onSave={handleSave} />}
         </div>

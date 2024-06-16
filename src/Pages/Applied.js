@@ -12,6 +12,7 @@ function Applied() {
 
     const handleDelete=async(id)=>{
         const data=await deleteAppliedJob(id)
+        fetchApply()
         console.log(data);
         
     }
