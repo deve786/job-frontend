@@ -1,77 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Card from './Card';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchJobs } from '../redux/jobSlice';
 
 function Jobs() {
   const dispatch = useDispatch();
-  const jobs = useSelector(state => state.jobs.alljobs);
-  const loading = useSelector(state => state.jobs.loading);
-  const error = useSelector(state => state.jobs.error);
-
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterCriteria, setFilterCriteria] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc');
+  const jobs = useSelector(state => state.jobs.alljobs); // Corrected selector
+  const loading = useSelector(state => state.jobs.loading); // Corrected selector
+  const error = useSelector(state => state.jobs.error); // Corrected selector
+  const [searchQuery, setSearchQuery] = useState(''); // State for search query
 
   useEffect(() => {
     dispatch(fetchJobs());
   }, [dispatch]);
 
-  // Handle search input change
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+    setSearchQuery(event.target.value);
   };
 
-  // Handle filter change
-  const handleFilterChange = (event) => {
-    setFilterCriteria(event.target.value);
-  };
-
-  // Handle sort change
-  const handleSortChange = (event) => {
-    setSortOrder(event.target.value);
-  };
-
-  // Filter and sort jobs based on the state
-  const filteredJobs = jobs
-    .filter(job => job.title.toLowerCase().includes(searchTerm.toLowerCase()))
-    .filter(job => (filterCriteria ? job.type === filterCriteria : true))
-    .sort((a, b) => {
-      if (sortOrder === 'asc') {
-        return new Date(a.date) - new Date(b.date);
-      } else {
-        return new Date(b.date) - new Date(a.date);
-      }
-    });
+  const filteredJobs = jobs.filter(job =>
+    job.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <div className="p-3 flex flex-col gap-3">
-      <div className="flex gap-3 mb-4">
+    <div className='p-3 flex gap-3 justify-center flex-wrap'>
+      <div className='w-full flex justify-center mb-3'>
         <input
-          type="text"
-          placeholder="Search by title..."
-          value={searchTerm}
+          type='text'
+          placeholder='Search jobs...'
+          value={searchQuery}
           onChange={handleSearchChange}
-          className="border p-2 rounded"
+          className='px-4 py-2 border rounded w-1/2'
         />
-        <select onChange={handleFilterChange} className="border p-2 rounded">
-          <option value="">All Types</option>
-          <option value="full-time">Full-Time</option>
-          <option value="part-time">Part-Time</option>
-          <option value="contract">Contract</option>
-        </select>
-        <select onChange={handleSortChange} className="border p-2 rounded">
-          <option value="asc">Sort by Date (Ascending)</option>
-          <option value="desc">Sort by Date (Descending)</option>
-        </select>
       </div>
-      <div className='flex justify-center flex wrap gap-3'>
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-        {!loading && !error && filteredJobs.map(job => (
-          <Card key={job.id} data={job} />
-        ))}
-      </div>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      {!loading && !error && filteredJobs && filteredJobs.map(i => (
+        <Card key={i.id} data={i} />
+      ))}
     </div>
   );
 }
