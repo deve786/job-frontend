@@ -2,7 +2,7 @@ import { commonRequest } from "./commonStructure";
 import { baseUrl } from "./baseUrl";
 
 // Function to add a new job
-export const addJob = async (body) => {
+export const addJobApi = async (body) => {
     try {
         const response = await commonRequest('POST', `${baseUrl}/job`, body);
         return response.data; // Assuming your API returns data in a 'data' property
@@ -13,7 +13,7 @@ export const addJob = async (body) => {
 };
 
 // Function to fetch a specific job by ID
-export const fetchSimpleJob = async (id) => {
+export const fetchSimpleJobApi = async (id) => {
     try {
         const response = await commonRequest('GET', `${baseUrl}/job/${id}`);
         return response.data; // Assuming your API returns data in a 'data' property
@@ -23,28 +23,28 @@ export const fetchSimpleJob = async (id) => {
     }
 };
 
-export const fetchJob=async()=>{
+export const fetchJobApi=async()=>{
     return await commonRequest('GET',`${baseUrl}/job`,{})
 }
 
-export const editJob=async(body,id)=>{
+export const editJobApi=async(body,id)=>{
     return await commonRequest('PUT',`${baseUrl}/job/${id}`,body)
 }
 
 
-export const deleteJob=async(id)=>{
+export const deleteJobApi=async(id)=>{
     return await commonRequest('DELETE',`${baseUrl}/job/${id}`,{})
 }
 
 
-export const applyJob=async(body)=>{
+export const applyJobApi=async(body)=>{
     return await commonRequest('POST',`${baseUrl}/apply`,body)
 }
 
-export const fetchAppliedJob=async()=>{
+export const fetchAppliedJobApi=async()=>{
     return await commonRequest('GET',`${baseUrl}/apply`,{})
 }
 
-export const deleteAppliedJob=async(id)=>{
+export const deleteAppliedJobApi=async(id)=>{
     return await commonRequest('DELETE',`${baseUrl}/apply/${id}`,{})
 }

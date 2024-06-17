@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Modal({ data, toggleModal, jobData, onSave }) {
+function Modal({ toggleModal, jobData, onSave }) {
     const [form, setForm] = useState({
         title: '',
         company: '',
@@ -9,7 +9,7 @@ function Modal({ data, toggleModal, jobData, onSave }) {
         location: '',
         description: '',
         technologies: '',
-        postedAt:Date.now()
+        postedAt: Date.now()
     });
 
     useEffect(() => {
@@ -18,22 +18,22 @@ function Modal({ data, toggleModal, jobData, onSave }) {
                 title: jobData.title,
                 company: jobData.company,
                 experience: jobData.experience,
-                salary:jobData.salary,
+                salary: jobData.salary,
                 location: jobData.location,
                 description: jobData.description,
                 technologies: jobData.technologies,
-                postedAt:jobData.postedAt
+                postedAt: jobData.postedAt
             });
         } else {
             setForm({
                 title: '',
                 company: '',
                 experience: '',
-                salary:'',
+                salary: '',
                 location: '',
                 description: '',
                 technologies: '',
-                postedAt:Date.now()
+                postedAt: Date.now()
             });
         }
     }, [jobData]);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { applyJob, fetchJob, fetchSimpleJob } from '../services/allAPI';
+import { applyJob, applyJobApi, fetchJob, fetchSimpleJob, fetchSimpleJobApi } from '../services/allAPI';
 
 function Job_detail() {
     const { id } = useParams(); // Assuming your route is '/job-detail/:id'
@@ -10,7 +10,7 @@ function Job_detail() {
     useEffect(() => {
         const getJob = async () => {
             try {
-                const data = await fetchSimpleJob(id); // Assuming fetchJob takes an id parameter
+                const data = await fetchSimpleJobApi(id); // Assuming fetchJob takes an id parameter
                 setJob(data); // Update state with fetched job data
             } catch (error) {
                 console.error('Error fetching job:', error);
@@ -58,7 +58,7 @@ function Job_detail() {
 
 
     const handleApply=async()=>{
-        const data=await applyJob(job)
+        const data=await applyJobApi(job)
         console.log(data);
     }
 

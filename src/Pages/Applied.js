@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { deleteAppliedJob, fetchAppliedJob } from '../services/allAPI'
+import { deleteAppliedJob, deleteAppliedJobApi, fetchAppliedJob, fetchAppliedJobApi } from '../services/allAPI'
 
 function Applied() {
     const [applied, setApplied] = useState([])
 
     const fetchApply=async()=>{
-        const data=await fetchAppliedJob()
+        const data=await fetchAppliedJobApi()
         console.log(data.data);
         setApplied(data.data)
     }
 
     const handleDelete=async(id)=>{
-        const data=await deleteAppliedJob(id)
+        const data=await deleteAppliedJobApi(id)
         fetchApply()
         console.log(data);
         
