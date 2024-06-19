@@ -5,7 +5,7 @@ function Modal({ toggleModal, jobData, onSave }) {
         title: '',
         company: '',
         experience: '',
-        salary:'',
+        salary: '',
         location: '',
         description: '',
         technologies: '',
@@ -50,8 +50,8 @@ function Modal({ toggleModal, jobData, onSave }) {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div className="fixed inset-0 bg-gray-900 bg-opacity-50" onClick={toggleModal}></div>
-            <div className="relative bg-white rounded-lg shadow-lg w-1/2 max-w-lg">
+            <div className="fixed inset-0 bg-gray-900 bg-opacity-50 " onClick={toggleModal}></div>
+            <div className="relative bg-white rounded-lg shadow-lg w-full max-w-lg mx-4 sm:mx-auto">
                 <header className="flex justify-between items-center p-5 border-b">
                     <h3 className="text-xl font-semibold">{jobData ? 'Edit Job' : 'Add Job'}</h3>
                     <button className="text-gray-500 hover:text-gray-700" aria-label="close" onClick={toggleModal}>
@@ -60,37 +60,37 @@ function Modal({ toggleModal, jobData, onSave }) {
                         </svg>
                     </button>
                 </header>
-                <section className="p-6">
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-4">
+                <section className="px-3">
+                    <form onSubmit={handleSubmit} className='flex flex-col gap-0'>
+                        <div className="mb-2">
                             <label className="block text-sm font-medium text-gray-700">Job Title</label>
-                            <input className="mt-1 px-3 py-1 border block w-full outline-none rounded-md shadow-sm" type="text" name="title" value={form.title} onChange={handleChange} required />
+                            <input className="mt-1 px-3 py-2 border block w-full outline-none rounded-md shadow-sm" type="text" name="title" value={form.title} onChange={handleChange} required />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-2">
                             <label className="block text-sm font-medium text-gray-700">Company</label>
-                            <input className="mt-1 px-3 py-1 outline-none border block w-full border-gray-300 rounded-md shadow-sm" type="text" name="company" value={form.company} onChange={handleChange} required />
+                            <input className="mt-1 px-3 py-2 outline-none border block w-full border-gray-300 rounded-md shadow-sm" type="text" name="company" value={form.company} onChange={handleChange} required />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-2">
                             <label className="block text-sm font-medium text-gray-700">Experience</label>
-                            <input className="mt-1 px-3 py-1 outline-none border block w-full border-gray-300 rounded-md shadow-sm" type="text" name="experience" value={form.experience} onChange={handleChange} required />
+                            <input className="mt-1 px-3 py-2 outline-none border block w-full border-gray-300 rounded-md shadow-sm" type="text" name="experience" value={form.experience} onChange={handleChange} required />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-2">
                             <label className="block text-sm font-medium text-gray-700">Salary</label>
-                            <input className="mt-1 px-3 py-1 outline-none border block w-full border-gray-300 rounded-md shadow-sm" type="text" name="salary" value={form.salary} onChange={handleChange} required />
+                            <input className="mt-1 px-3 py-2 outline-none border block w-full border-gray-300 rounded-md shadow-sm" type="text" name="salary" value={form.salary} onChange={handleChange} required />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-2">
                             <label className="block text-sm font-medium text-gray-700">Location</label>
-                            <input className="mt-1 block w-full px-3 py-1 border outline-none border-gray-300 rounded-md shadow-sm" type="text" name="location" value={form.location} onChange={handleChange} required />
+                            <input className="mt-1 block w-full px-3 py-2 border outline-none border-gray-300 rounded-md shadow-sm" type="text" name="location" value={form.location} onChange={handleChange} required />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-2">
                             <label className="block text-sm font-medium text-gray-700">Description</label>
-                            <textarea className="mt-1 px-3 py-1  outline-none border block w-full border-gray-300 rounded-md shadow-sm" name="description" value={form.description} onChange={handleChange} required></textarea>
+                            <textarea className="mt-1 px-3 py-2 outline-none border block w-full border-gray-300 rounded-md shadow-sm" name="description" value={form.description} onChange={handleChange} required></textarea>
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-1">
                             <label className="block text-sm font-medium text-gray-700">Technologies</label>
-                            <input className="mt-1 px-3 py-1 border outline-none block w-full border-gray-300 rounded-md shadow-sm" type="text" name="technologies" value={form.technologies} onChange={handleChange} required />
+                            <input className="mt-1 px-3 py-2 border outline-none block w-full border-gray-300 rounded-md shadow-sm" type="text" name="technologies" value={form.technologies} onChange={handleChange} required />
                         </div>
-                        <footer className="flex justify-end gap-2">
+                        <footer className="flex justify-end gap-1">
                             <button className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600" type="submit">Save changes</button>
                             <button className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600" type="button" onClick={toggleModal}>Cancel</button>
                         </footer>

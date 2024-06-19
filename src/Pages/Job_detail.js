@@ -66,17 +66,17 @@ function Job_detail() {
         <div className='p-3 px-6'>
             <div className='flex justify-between mb-3 px-8 py-4'>
                 <h2 className='text-4xl font-bold'>{job.title}</h2>
-                <button onClick={handleApply} className='border font-semibold py-1 text-white px-8 rounded-2xl bg-blue-700 hover:bg-blue-500 hover:text-black'>Apply</button>
+                <button onClick={handleApply} className='py-6 border  font-semibold  text-white sm:px-8 rounded-2xl bg-blue-700 hover:bg-blue-500 hover:text-black'>Apply</button>
             </div>
             <hr />
-            <div className='flex gap-5'>
-                <div className='w-1/2 mt-5'>
+            <div className='flex-col flex gap-5 sm:flex-row'>
+                <div className='sm:w-1/2 mt-5 w-full'>
                     <h2 className='font-semibold text-xl mb-2 mt-3'>Job Description</h2>
                     <p>{job.description}</p>
                     <h2 className='font-semibold text-xl mb-2 mt-3'>Technical Skill Set:</h2>
                     <p>{job.technologies}</p>
                 </div>
-                <div className='w-1/2 mt-5'>
+                <div className='sm:w-1/2 mt-5 w-full'>
                     <div className='border rounded mb-2 mt-3 p-3'>
                         <h2 className='font-semibold text-xl mb-2'>More Details</h2>
                         <div className='flex flex-col font-semibold gap-4'>
