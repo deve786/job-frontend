@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { deleteAppliedJob, deleteAppliedJobApi, fetchAppliedJob, fetchAppliedJobApi } from '../services/allAPI'
+import {  deleteAppliedJobApi,  fetchAppliedJobApi } from '../services/allAPI'
 
 function Applied() {
     const [applied, setApplied] = useState([])

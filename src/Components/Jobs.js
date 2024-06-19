@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import Card from './Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchJobs } from '../redux/jobSlice';
+import Card from './Card'; 
 
-function Jobs() {
+const Jobs = () => {
   const dispatch = useDispatch();
-  const jobs = useSelector(state => state.jobs.alljobs); // Corrected selector
-  const loading = useSelector(state => state.jobs.loading); // Corrected selector
-  const error = useSelector(state => state.jobs.error); // Corrected selector
+  const jobs = useSelector(state => state.jobs.alljobs);
+  const loading = useSelector(state => state.jobs.loading);
+  const error = useSelector(state => state.jobs.error);
 
   useEffect(() => {
     dispatch(fetchJobs());
@@ -17,11 +17,11 @@ function Jobs() {
     <div className='p-3 flex gap-3 justify-center flex-wrap'>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      {!loading && !error && jobs && jobs.map(i => (
-        <Card key={i.id} data={i} />
+      {jobs && jobs.map(job => (
+        <Card key={job.id} data={job} />
       ))}
     </div>
   );
-}
+};
 
 export default Jobs;
