@@ -66,7 +66,7 @@ function Job_detail() {
         <div className='p-3 px-6'>
             <div className='flex justify-between mb-3 px-8 py-4'>
                 <h2 className='text-4xl font-bold'>{job.title}</h2>
-                <button onClick={handleApply} className='py-6 border  font-semibold  text-white sm:px-8 rounded-2xl bg-blue-700 hover:bg-blue-500 hover:text-black'>Apply</button>
+                <div><button onClick={handleApply} className='py-2 border px-4 font-semibold  text-white sm:px-8 rounded-2xl bg-blue-700 hover:bg-blue-500 hover:text-black'>Apply</button></div>
             </div>
             <hr />
             <div className='flex-col flex gap-5 sm:flex-row'>
