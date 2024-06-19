@@ -18,7 +18,7 @@ function App() {
           
           
           <Route path='/' element={<Home />}></Route>
-          <Route path='/admin' element={<Admin />}></Route>
+          <Route path='/admin' element={<Admin />}></Route> 
           <Route path='/job-detail/:id' element={<Job_detail />} />
           <Route path='/applied' element={<Applied />} />
 
@@ -27,6 +27,7 @@ function App() {
       </div>
       <Footer />
     </div>
+   
   );
 }
 

@@ -6,7 +6,7 @@ function Card({ data }) {
 
 
 
-    <div class="max-w-sm min-w-sm  flex flex-col justify-between bg-white max-h-86 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p">
+    <div class="max-w-sm  flex flex-col justify-between bg-white max-h-86 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p">
 
       <div class="p-5">
         <a href="#">

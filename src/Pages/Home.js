@@ -6,7 +6,7 @@ import Footer from '../Components/Footer'
 
 function Home() {
     return (
-        <div>
+        <div className='flex flex-col'>
             <Banner />
             <Jobs />
 
